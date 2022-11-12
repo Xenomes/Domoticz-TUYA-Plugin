@@ -5,12 +5,12 @@
 # Contributed: Xenomes (xenomes@outlook.com)
 #
 """
-<plugin key="tuya" name="TUYA" author="Wagner Oliveira contributed Xenomes" version="1.0.13" wikilink="" externallink="https://github.com/Xenomes/Domoticz-TUYA-Plugin.git">
+<plugin key="tuya" name="TUYA" author="Wagner Oliveira contributed Xenomes" version="1.0.14" wikilink="" externallink="https://github.com/Xenomes/Domoticz-TUYA-Plugin.git">
     <description>
         Support forum: <a href="https://www.domoticz.com/forum/viewtopic.php?f=65&amp;t=33145">https://www.domoticz.com/forum/viewtopic.php?f=65&amp;t=33145</a><br/>
         Support forum Dutch: <a href="https://contactkring.nl/phpbb/viewtopic.php?f=60&amp;t=846">https://contactkring.nl/phpbb/viewtopic.php?f=60&amp;t=846</a><br/>
         <br/>
-        <h2>TUYA Plugin v.1.0.13</h2><br/>
+        <h2>TUYA Plugin v.1.0.14</h2><br/>
         This plugin is meant to control TUYA devices (mainly on/off switches and LED lights). TUYA devices may come with different brands and different Apps such as Smart Life or Jinvoo Smart, so select the corresponding App you're using below.
         <h3>Features</h3>
         <ul style="list-style-type:square">
@@ -135,21 +135,23 @@ class BasePlugin:
         if Command == 'On':
             if dev_type == 'scene':
                 dev.activate()
-            elif dev_type == 'cover':
-                dev.close_cover()
             else:
                 dev.turn_on()
             UpdateDevice(Unit, 1, 'On', not dev.available())
         elif Command == 'Off':
             if dev_type == 'scene':
                 dev.activate()
-            elif dev_type == 'cover':
-                dev.open_cover()
             else:
                 dev.turn_off();
             UpdateDevice(Unit, 0, 'Off', not dev.available())
-        elif dev_type == 'cover' and Command == 'Stop':
-            dev.stop_cover()
+        elif dev_type == 'cover':
+            if Command == 'Open':
+                dev.open_cover()
+            elif Command == 'Stop':
+                dev.stop_cover()
+            elif Command == 'Close':
+                dev.close_cover()
+            UpdateDevice(Unit, 1, 'On', not dev.available())
         elif Command == 'Set Color':
             # Convert RGB to Hue+Saturation
             rgb = json.loads(Hue)
