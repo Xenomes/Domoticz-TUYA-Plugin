@@ -57,10 +57,6 @@ Devices detected are created in the 'Devices' tab, to use them you need to click
 | 1.0.1 | Support for SmartLife and Jinvoo Apps |
 | 1.0.0 | Initial upload version |
 
-## My device is not listed in Tuya API response or contains incomplete state, what should I do?
-
-Write an email to tuyasmart@tuya.com and mention the tuyapy library and https://px1.tuya{}.com API endpoint. Usually they ignore incoming emails, but perhaps, if they get a lot of emails, they will start fixing the API.
-
 ## Note
 
 I can only support devices or with similar functions that I have myself. Thank you for your understanding.
