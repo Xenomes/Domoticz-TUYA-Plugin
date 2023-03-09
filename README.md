@@ -42,6 +42,7 @@ Devices detected are created in the 'Devices' tab, to use them you need to click
 
 | Version | Information|
 | ----- | ---------- |
+| 1.0.15 | Update for blinds/cover |
 | 1.0.14 | Change blinds/cover control for Domoticz 2022.2 |
 | 1.0.13 | Disabled turn devices offline at startup |
 | 1.0.12 | Fix for cover or blinds status |
