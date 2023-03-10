@@ -142,7 +142,7 @@ class BasePlugin:
             if dev_type == 'scene':
                 dev.activate()
             else:
-                dev.turn_off();
+                dev.turn_off()
             UpdateDevice(Unit, 0, 'Off', not dev.available())
         elif dev_type == 'cover':
             if Command == 'Open':
@@ -154,7 +154,7 @@ class BasePlugin:
             elif Command == 'Close':
                 dev.close_cover()
                 UpdateDevice(Unit, 0, 'Close', not dev.available())
-elif Command == 'Set Color':
+        elif Command == 'Set Color':
             # Convert RGB to Hue+Saturation
             rgb = json.loads(Hue)
             h, s = rgb_to_hs(rgb.get("r"), rgb.get("g"), rgb.get("b"))
@@ -285,7 +285,7 @@ elif Command == 'Set Color':
 
         except Exception as err:
             Domoticz.Error("handleThread: "+str(err)+' line '+format(sys.exc_info()[-1].tb_lineno))
-            
+
 
 global _plugin
 _plugin = BasePlugin()
