@@ -138,22 +138,27 @@ class BasePlugin:
             else:
                 dev.turn_on()
             UpdateDevice(Unit, 1, 'On', not dev.available())
+            Domoticz.Log('On Called')
         elif Command == 'Off':
             if dev_type == 'scene':
                 dev.activate()
             else:
                 dev.turn_off()
             UpdateDevice(Unit, 0, 'Off', not dev.available())
+            Domoticz.Log('Off Called')
         # elif dev_type == 'cover':
         if Command == 'Open':
             dev.open_cover()
             UpdateDevice(Unit, 1, 'Open', not dev.available())
+            Domoticz.Log('Open Called')
         elif Command == 'Stop':
             dev.stop_cover()
             UpdateDevice(Unit, 0, 'Stop', not dev.available())
+            Domoticz.Log('Stop Called')
         elif Command == 'Close':
             dev.close_cover()
             UpdateDevice(Unit, 0, 'Close', not dev.available())
+            Domoticz.Log('CLose Called')
         elif Command == 'Set Color':
             # Convert RGB to Hue+Saturation
             rgb = json.loads(Hue)
@@ -177,11 +182,13 @@ class BasePlugin:
                 Domoticz.Debug("Set bright called")
             # Update status of Domoticz device
             Devices[Unit].Update(nValue=1, sValue=str(Level), TimedOut=Devices[Unit].TimedOut, Color=Hue)
+            Domoticz.Log('Set Color Called')
         elif Command == 'Set Level':
             # Set new level
             dev.set_brightness(round(Level*2.55))
             # Update status of Domoticz device
             UpdateDevice(Unit, 1 if Devices[Unit].Type == 241 else 2, str(Level), Devices[Unit].TimedOut)
+            Domoticz.Log('Set Level Called')
 
         # Set last update
         self.last_update = time.time()
