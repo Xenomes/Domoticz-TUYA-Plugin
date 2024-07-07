@@ -1,4 +1,8 @@
+# This plugin is no longer supported. For better device support, see https://github.com/Xenomes/Domoticz-TinyTUYA-Plugin
+
+
 # Domoticz-TUYA-Plugin
+
 TUYA Plugin for Domoticz home automation
 
 Controls TUYA devices your network (mainly on/off switches and Lights). Tuya devices come in many brands and may come with different apps such as Smart Life or Jinvoo Smart, so select the matching App when configuring the plugin.
